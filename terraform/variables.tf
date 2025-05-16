@@ -25,5 +25,5 @@ variable "ssh_public_key" {
 
 variable "image" {
   type        = string
-  deafulat = "debian-9-stretch-v20220118"
+  default = "debian-9-stretch-v20220118"
 }

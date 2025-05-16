@@ -29,7 +29,7 @@ resource "google_compute_firewall" "allow_ssh" {
 
 # VM with outdated Linux image
 resource "google_compute_instance" "db_vm" {
-  name         = "db_vm"
+  name         = "mongodb-vm"
   machine_type = "e2-mini"
   zone         = var.zone
 

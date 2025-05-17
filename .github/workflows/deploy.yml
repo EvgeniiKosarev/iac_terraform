@@ -30,6 +30,12 @@ jobs:
         working-directory: terraform
         run: terraform init -reconfigure
 
+      - name: Import existing resources
+        working-directory: terraform
+        run: |
+          terraform import google_storage_bucket.public_bucket clgcporg10-db-backup || true
+          terraform import google_compute_firewall.allow_ssh projects/clgcporg10-190/global/firewalls/allow-ssh || true
+
       - name: Terraform Plan
         working-directory: terraform
         run: |

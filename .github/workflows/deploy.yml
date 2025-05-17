@@ -35,6 +35,7 @@ jobs:
         run: |
           terraform import google_storage_bucket.public_bucket clgcporg10-190-db-backup || true
           terraform import google_compute_firewall.allow_ssh projects/clgcporg10-190/global/firewalls/allow-ssh || true
+          terraform import google_compute_instance.db_vm projects/clgcporg10-190/zones/europe-west1-b/instances/mongodb-vm || true
 
       - name: Terraform Plan
         working-directory: terraform

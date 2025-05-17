@@ -27,6 +27,21 @@ resource "google_compute_firewall" "allow_ssh" {
   source_ranges = ["0.0.0.0/0"]
 }
 
+# Allow connections to mongodb
+resource "google_compute_firewall" "allow_mongodb" {
+  name    = "allow-mongodb"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["27017"]
+  }
+
+  # We will need to replace this with Kubernetes IP address
+  source_ranges = ["0.0.0.0/0"]
+
+}
+
 # VM with outdated Linux image
 resource "google_compute_instance" "db_vm" {
   name         = "mongodb-vm"

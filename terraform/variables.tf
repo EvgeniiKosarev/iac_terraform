@@ -25,5 +25,5 @@ variable "ssh_public_key" {
 
 variable "image" {
   type        = string
-  default = "ubuntu-os-cloud/ubuntu-1604-xenial-v20220110"
+  default = "debian-9-stretch-v20220118"
 }

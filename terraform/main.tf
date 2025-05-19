@@ -38,7 +38,6 @@ resource "google_compute_firewall" "allow_mongodb" {
   }
 
   # We will need to replace this with Kubernetes IP address
-  #source_ranges = ["0.0.0.0/0"]
   source_ranges = ["10.132.0.0/20"]
 
 }

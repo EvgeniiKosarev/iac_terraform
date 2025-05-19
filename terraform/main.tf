@@ -66,7 +66,7 @@ resource "google_compute_instance" "db_vm" {
 
 # GKE Cluster
 resource "google_container_cluster" "gke_cluster" {
-  name     = "cluster_for_Evgenii_app"
+  name     = "cluster-for-evgenii-app"
   location = var.region
 
   remove_default_node_pool = true

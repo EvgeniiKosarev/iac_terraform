@@ -45,7 +45,7 @@ jobs:
       - name: Get GKE credentials
         uses: google-github-actions/get-gke-credentials@v2
         with:
-          cluster_name: cluster_for_evgenii_app
+          cluster_name: cluster-for-evgenii-app
           location: europe-west1
           project_id: clgcporg10-190
 

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evgenii-app-depl
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app # same as selector
+    spec:
+      serviceAccountName: evgenii-app-admin
+      containers:
+        - name: evgenii-app-container
+          image: evgeniikosarev/application_images:latest
+          ports:
+            - containerPort: 80

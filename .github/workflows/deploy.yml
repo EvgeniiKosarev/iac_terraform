@@ -41,3 +41,15 @@ jobs:
         working-directory: terraform
         run: |
           terraform apply -auto-approve
+
+      - name: Get GKE credentials
+        uses: google-github-actions/get-gke-credentials@v2
+        with:
+          cluster_name: cluster_for_Evgenii_app
+          location: europe-west1
+          project_id: clgcporg10-190
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f kubernetes_deployment.yaml
+          kubectl apply -f kubernetes_service.yaml

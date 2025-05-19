@@ -63,3 +63,36 @@ resource "google_compute_instance" "db_vm" {
     ssh-keys = "${var.ssh_user}:${var.ssh_public_key}"
   }
 }
+
+# GKE Cluster
+resource "google_container_cluster" "gke_cluster" {
+  name     = "cluster_for_Evgenii_app"
+  location = var.region
+
+  remove_default_node_pool = true
+  initial_node_count       = 1
+
+  networking_mode = "VPC_NATIVE"
+
+  master_auth {
+    username = ""
+    password = ""
+    client_certificate_config {
+      issue_client_certificate = false
+    }
+  }
+}
+
+resource "google_container_node_pool" "default_pool" {
+  name       = "default-pool"
+  location   = var.region
+  cluster    = google_container_cluster.gke_cluster.name
+  node_count = 2
+
+  node_config {
+    machine_type = "e2-small"
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
+  }
+}

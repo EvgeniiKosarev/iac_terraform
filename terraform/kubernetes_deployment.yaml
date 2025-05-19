@@ -18,3 +18,8 @@ spec:
           image: evgeniikosarev/application_images:latest
           ports:
             - containerPort: 80
+          env:
+            - name: SECRET_KEY
+              value: SuperStrongPasswordByEvgenii
+            - name: MONGODB_URI
+              value: mongodb://admin:SuperStrongPasswordByEvgenii@35.190.220.246:27017/admin

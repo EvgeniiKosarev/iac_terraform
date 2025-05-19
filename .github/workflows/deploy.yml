@@ -56,3 +56,4 @@ jobs:
           kubectl apply -f kubernetes_cluster_role.yaml
           kubectl apply -f kubernetes_deployment.yaml
           kubectl apply -f kubernetes_service.yaml
+          kubectl apply -f kubernetes_app_admin_sa_secret.yaml

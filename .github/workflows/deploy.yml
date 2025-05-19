@@ -50,6 +50,7 @@ jobs:
           project_id: clgcporg10-190
 
       - name: Deploy to Kubernetes
+        working-directory: terraform
         run: |
           kubectl apply -f kubernetes_deployment.yaml
           kubectl apply -f kubernetes_service.yaml

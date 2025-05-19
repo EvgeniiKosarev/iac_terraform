@@ -90,7 +90,7 @@ resource "google_container_node_pool" "default_pool" {
   node_count = 2
 
   node_config {
-    machine_type = "e2-small"
+    machine_type = "e2-micro"
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]

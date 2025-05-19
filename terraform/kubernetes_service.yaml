@@ -8,4 +8,4 @@ spec:
     app: web-app # matches selector and templates in deployment
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 8080

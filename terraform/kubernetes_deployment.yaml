@@ -17,7 +17,7 @@ spec:
         - name: evgenii-app-container
           image: evgeniikosarev/application_images:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           env:
             - name: SECRET_KEY
               value: SuperStrongPasswordByEvgenii

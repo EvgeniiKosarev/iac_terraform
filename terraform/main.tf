@@ -75,8 +75,6 @@ resource "google_container_cluster" "gke_cluster" {
   networking_mode = "VPC_NATIVE"
 
   master_auth {
-    username = ""
-    password = ""
     client_certificate_config {
       issue_client_certificate = false
     }

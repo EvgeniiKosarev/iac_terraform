@@ -1,5 +1,5 @@
 - name: Set up MongoDB backup to GCS bucket
-  hosts: mongodb-group
+  hosts: mongodbgroup
   become: yes
 
   vars:

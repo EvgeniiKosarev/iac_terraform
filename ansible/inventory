@@ -1,2 +1,0 @@
-[mongodbgroup]
-mongodb-vm ansible_host=35.190.220.246 ansible_user=evgeniikosarev

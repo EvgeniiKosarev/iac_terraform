@@ -50,10 +50,24 @@ jobs:
           project_id: clgcporg10-190
 
       - name: Deploy to Kubernetes
-        working-directory: terraform
+        working-directory: kubernetes
         run: |
           kubectl apply -f kubernetes_app_admin_sa.yaml
           kubectl apply -f kubernetes_cluster_role.yaml
           kubectl apply -f kubernetes_deployment.yaml
           kubectl apply -f kubernetes_service.yaml
           kubectl apply -f kubernetes_app_admin_sa_secret.yaml
+          
+
+      - name: Install Ansible
+        run: sudo apt-get update && sudo apt-get install -y ansible
+
+      - name: Run Ansible Playbook
+        working-directory: ansible
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"
+        run: |
+          echo "${{ secrets.ANSIBLE_SSH_PRIVATE_KEY }}" > ansible_key.pem
+          chmod 600 ansible_key.pem
+          export ANSIBLE_PRIVATE_KEY_FILE=ansible_key.pem
+          ansible-playbook -i inventory backup_mongo.yaml --private-key=ansible_key.pem -u evgeniikosarev

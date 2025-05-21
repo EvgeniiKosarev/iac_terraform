@@ -59,13 +59,8 @@ jobs:
           kubectl apply -f kubernetes_app_admin_sa_secret.yaml
           
 
-
-      - name: Install Ansible 2.9
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3-pip python3-setuptools
-          pip3 install ansible==2.9
-
+      - name: Install Ansible
+        run: sudo apt-get update && sudo apt-get install -y ansible
 
       - name: Run Ansible Playbook
         working-directory: ansible

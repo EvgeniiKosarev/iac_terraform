@@ -1,6 +1,7 @@
 - name: Set up MongoDB backup to GCS bucket
   hosts: mongodbgroup
   become: yes
+  gather_facts: no
 
   vars:
     gcs_bucket: "clgcporg10-190-db-backup"
@@ -8,10 +9,10 @@
 
   tasks:
 
-    - name: Install required packages
-      apt:
-        name: [mongodb-clients, google-cloud-sdk, cron]
-        update_cache: yes
+    - name: Install required packages (fallback raw mode)
+      raw: |
+        apt-get update && \
+        apt-get install -y mongodb-clients google-cloud-sdk cron
 
     - name: Create MongoDB backup script
       copy:

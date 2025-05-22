@@ -14,7 +14,7 @@ resource "google_storage_bucket_iam_binding" "public_read" {
   ]
 }
 
-# Allow SSH from internet
+# Allow SSH to VM from internet
 resource "google_compute_firewall" "allow_ssh" {
   name    = "allow-ssh"
   network = "default"
@@ -24,6 +24,7 @@ resource "google_compute_firewall" "allow_ssh" {
     ports    = ["22"]
   }
 
+  target_tags   = ["mongodb-compute"]
   source_ranges = ["0.0.0.0/0"]
 }
 
@@ -38,8 +39,9 @@ resource "google_compute_firewall" "allow_mongodb" {
   }
 
   # We will need to replace this with Kubernetes IP address
-  #source_ranges = ["10.116.0.0/20"]
-  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["mongodb-compute"]
+  source_ranges = ["10.116.0.0/16"]
+  #source_ranges = ["0.0.0.0/0"]
 
 }
 
@@ -68,6 +70,7 @@ resource "google_compute_instance" "db_vm" {
     email  = "mongodb-vm-sa@clgcporg10-190.iam.gserviceaccount.com"
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
+  tags = ["mongodb-compute"]
 }
 
 # GKE Cluster

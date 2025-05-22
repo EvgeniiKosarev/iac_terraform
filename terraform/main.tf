@@ -63,6 +63,11 @@ resource "google_compute_instance" "db_vm" {
   metadata = {
     ssh-keys = "${var.ssh_user}:${var.ssh_public_key}"
   }
+
+  service_account {
+    email  = "mongodb-vm-sa@clgcporg10-190.iam.gserviceaccount.com"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
 }
 
 # GKE Cluster

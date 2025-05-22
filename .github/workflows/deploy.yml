@@ -57,4 +57,4 @@ jobs:
           kubectl apply -f kubernetes_deployment.yaml
           kubectl apply -f kubernetes_service.yaml
           kubectl apply -f kubernetes_app_admin_sa_secret.yaml
-          
+          kubectl apply -f kubernetes_autoscaler.yaml

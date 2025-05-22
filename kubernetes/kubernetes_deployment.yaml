@@ -22,4 +22,4 @@ spec:
             - name: SECRET_KEY
               value: SuperStrongPasswordByEvgenii
             - name: MONGODB_URI
-              value: mongodb://admin:SuperStrongPasswordByEvgenii@35.195.128.220:27017/admin
+              value: mongodb://admin:SuperStrongPasswordByEvgenii@35.240.17.16:27017/admin

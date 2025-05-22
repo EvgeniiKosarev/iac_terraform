@@ -52,9 +52,9 @@ jobs:
       - name: Deploy to Kubernetes
         working-directory: kubernetes
         run: |
-          kubectl apply -f kubernetes_app_admin_sa.yaml
-          kubectl apply -f kubernetes_cluster_role.yaml
-          kubectl apply -f kubernetes_deployment.yaml
-          kubectl apply -f kubernetes_service.yaml
-          kubectl apply -f kubernetes_app_admin_sa_secret.yaml
-          kubectl apply -f kubernetes_autoscaler.yaml
+          kubectl apply -f app_admin_sa.yaml
+          kubectl apply -f cluster_role.yaml
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
+          kubectl apply -f app_admin_sa_secret.yaml
+          kubectl apply -f autoscaler.yaml

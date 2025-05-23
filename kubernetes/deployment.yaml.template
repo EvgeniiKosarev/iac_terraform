@@ -21,9 +21,9 @@ spec:
             - containerPort: 8080
           env:
             - name: SECRET_KEY
-              value: SuperStrongPasswordByEvgenii
+              value: "$SECRET_KEY"
             - name: MONGODB_URI
-              value: mongodb://admin:SuperStrongPasswordByEvgenii@10.132.0.5:27017/admin
+              value: "$MONGODB_URI"
           resources:
             requests:
               cpu: "100m"

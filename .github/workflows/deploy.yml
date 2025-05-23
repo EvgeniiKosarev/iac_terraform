@@ -54,7 +54,10 @@ jobs:
         run: |
           kubectl apply -f app_admin_sa.yaml
           kubectl apply -f cluster_role.yaml
+          envsubst < deployment.yaml.template > deployment.yaml
           kubectl apply -f deployment.yaml
           kubectl apply -f service.yaml
           kubectl apply -f app_admin_sa_secret.yaml
-          kubectl apply -f autoscaler.yaml
+        env:
+          SECRET_KEY: ${{ secrets.MONGODB_KEY }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}

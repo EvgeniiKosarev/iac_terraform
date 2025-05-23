@@ -32,6 +32,11 @@ jobs:
         working-directory: terraform
         run: terraform init -reconfigure
 
+      - name: Terraform Import
+        working-directory: terraform
+        run: terraform import google_service_account.mongodb-vm-sa projects/clgcporg10-190/serviceAccounts/mongodb-vm-sa@clgcporg10-190.iam.gserviceaccount.com
+
+
       - name: Terraform Plan
         working-directory: terraform
         run: |

@@ -20,6 +20,8 @@ jobs:
 
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v2
+        with:
+          install_components: kubectl
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v2

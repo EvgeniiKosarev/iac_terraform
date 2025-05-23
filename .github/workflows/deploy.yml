@@ -32,6 +32,9 @@ jobs:
         working-directory: terraform
         run: terraform init -reconfigure
 
+      - name: Terraform Import
+        working-directory: terraform
+        run: terraform import google_service_account.sample-db-app-actions-sa projects/clgcporg10-190/serviceAccounts/sample-db-app-actions-sa@clgcporg10-190.iam.gserviceaccount.com
 
       - name: Terraform Plan
         working-directory: terraform

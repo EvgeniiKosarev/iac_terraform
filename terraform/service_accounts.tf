@@ -1,10 +1,13 @@
-resource "google_service_account" "testing_sa" {
-  account_id   = "testing"
-  display_name = "Lets see if I can declare SA with terraform"
+resource "google_service_account" "sample-db-app-actions-sa" {
+  account_id   = "sample-db-app-actions-sa"
+  display_name = "SA for Github Workflow for Application"
 }
 
-resource "google_project_iam_member" "testing_storage_access" {
+resource "google_project_iam_member" "sample-db-app-actions-sa_kubernetes" {
   project = var.project_id
-  role    = "roles/storage.objectCreator"
-  member  = "serviceAccount:${google_service_account.testing_sa.email}"
+  role    = "roles/container.admin"
+  member  = "serviceAccount:${google_service_account.sample-db-app-actions-sa.email}"
 }
+
+
+

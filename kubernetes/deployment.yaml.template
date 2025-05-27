@@ -13,6 +13,9 @@ spec:
         app: web-app # same as selector
     spec:
       serviceAccountName: evgenii-app-admin
+      securityContext:
+        runAsNonRoot: true          # Enforces non-root UID at pod level (optional but recommended)
+        runAsUser: 1000
       containers:
         - name: evgenii-app-container
           image: evgeniikosarev/application_images:latest

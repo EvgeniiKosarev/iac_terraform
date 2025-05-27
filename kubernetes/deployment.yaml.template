@@ -13,9 +13,6 @@ spec:
         app: web-app # same as selector
     spec:
       serviceAccountName: evgenii-app-admin
-      securityContext:
-        runAsNonRoot: true          # Enforces non-root UID at pod level (optional but recommended)
-        runAsUser: 1000
       containers:
         - name: evgenii-app-container
           image: evgeniikosarev/application_images:latest
@@ -27,8 +24,4 @@ spec:
               value: "$SECRET_KEY"
             - name: MONGODB_URI
               value: "$MONGODB_URI"
-          securityContext:
-            runAsUser: 1000                 # Run as non-root user
-            runAsNonRoot: true              # Enforce non-root
-            allowPrivilegeEscalation: false
 

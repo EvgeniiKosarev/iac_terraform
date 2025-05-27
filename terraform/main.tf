@@ -6,13 +6,13 @@ resource "google_storage_bucket" "public_bucket" {
 
 }
 
-#resource "google_storage_bucket_iam_binding" "public_read" {
- # bucket = google_storage_bucket.public_bucket.name
- # role   = "roles/storage.objectViewer"
-#  members = [
- #   "allUsers",
- # ]
-#}
+resource "google_storage_bucket_iam_binding" "public_read" {
+  bucket = google_storage_bucket.public_bucket.name
+  role   = "roles/storage.objectViewer"
+  members = [
+    "allUsers",
+  ]
+}
 
 # Allow SSH to VM from internet
 resource "google_compute_firewall" "allow_ssh" {
@@ -25,7 +25,7 @@ resource "google_compute_firewall" "allow_ssh" {
   }
 
   target_tags   = ["mongodb-compute"]
-  source_ranges = ["77.250.151.70/32"]
+  source_ranges = ["0.0.0.0/0"]
 }
 
 # Allow connections to mongodb
@@ -40,8 +40,8 @@ resource "google_compute_firewall" "allow_mongodb" {
 
   # We will need to replace this with Kubernetes IP address
   target_tags   = ["mongodb-compute"]
-  source_ranges = ["10.116.0.0/14"]
-  #source_ranges = ["0.0.0.0/0"]
+  #source_ranges = ["10.116.0.0/14"]
+  source_ranges = ["0.0.0.0/0"]
 
 }
 

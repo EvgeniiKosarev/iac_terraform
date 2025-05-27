@@ -6,13 +6,13 @@ resource "google_storage_bucket" "public_bucket" {
 
 }
 
-resource "google_storage_bucket_iam_binding" "public_read" {
-  bucket = google_storage_bucket.public_bucket.name
-  role   = "roles/storage.objectViewer"
-  members = [
-    "allUsers",
-  ]
-}
+#resource "google_storage_bucket_iam_binding" "public_read" {
+ # bucket = google_storage_bucket.public_bucket.name
+ # role   = "roles/storage.objectViewer"
+#  members = [
+ #   "allUsers",
+ # ]
+#}
 
 # Allow SSH to VM from internet
 resource "google_compute_firewall" "allow_ssh" {

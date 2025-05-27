@@ -25,7 +25,7 @@ resource "google_compute_firewall" "allow_ssh" {
   }
 
   target_tags   = ["mongodb-compute"]
-  source_ranges = ["0.0.0.0/0"]
+  source_ranges = ["77.250.151.70/32"]
 }
 
 # Allow connections to mongodb
